@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right" >
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manu <span class="caret"></span></a>
+                <ul class="dropdown-menu droplist" style="margin-top:14px">
+                    <li> @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" , @class = "transtion droplist-item transtion",style="width:100%" })</li>
+                   
+                    <li class="divider"></li>
+     
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()" style="width:100%" class="transtion  droplist-item transtion">Log off</a></li>              
+                </ul>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right ">
+        
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manu <span class="caret"></span></a>
+            <ul class="dropdown-menu droplist">
+                <li>
+
+                    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "droplist-item transtion" })
+
+                </li>
+
+                <li>
+                    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "droplist-item transtion" })
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+
+
+
+
+
+
+}

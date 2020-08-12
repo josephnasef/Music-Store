@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Browse Albums";
+}
+<div class="container ">
+    <div class="row">
+        <div class="col-md-10 list">
+            <div class="genre">
+                <h3 class="h-mod"><em>@Model.Name</em> Albums</h3>
+                <ul id="album-list" class="list">
+                    @foreach (var album in Model.Albums)
+                    {
+                        <li>
+                            <a href="@Url.Action("Details", new { id = album.AlbumId } )">
+                                <div class="shadow">
+                                    <img alt="@album.Title" src="@album.AlbumArtUrl" />
+                                </div>
+                                <span class="text-justify shad">@album.Title</span>
+                            </a>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

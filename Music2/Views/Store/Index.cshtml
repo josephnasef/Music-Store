@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Music2.Models.Genre>
+
+@{
+    ViewBag.Title = "Index";
+}
+ 
+<div class="container cartlist">
+    <div class="row">
+        <div class="col-md-10 list">
+            <h3 class="h-mod">Browse Genres</h3>
+            <p class="text-warning" > Select from @Model.Count() genres:</p>
+            <ul class="list-group" style="width:30%">
+                @foreach (var genre in Model)
+                {
+
+                    <li class="list-group-item ">
+                        @Html.ActionLink(genre.Name, "Browse", new { genre = genre.Name })
+                       
+                        <span class="badge">@genre.Albums.Count()</span>
+                </li>
+                
+            }
+            </ul>
+            </div>
+        </div>
+    </div>
